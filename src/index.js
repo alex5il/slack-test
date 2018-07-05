@@ -10,6 +10,7 @@ import { log, normalizePort } from './utils';
 const app = express();
 
 app.start = async () => {
+  console.log('starting server');
   log.info('Starting Server...');
   const port = normalizePort(config.get('port'));
   app.set('port', port);
@@ -18,12 +19,14 @@ app.start = async () => {
 
   server.on('error', (error) => {
     if (error.syscall !== 'listen') throw error;
+    console.log('failed')
     log.error(`Failed to start server: ${error}`);
     process.exit(1);
   });
 
   server.on('listening', () => {
     const address = server.address();
+    console.log('listening')
     log.info(`Server listening ${address.address}:${address.port}`);
   });
 
