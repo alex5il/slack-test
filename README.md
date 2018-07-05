@@ -25,7 +25,6 @@ Create a `development.json` file in the `config` folder with the following conte
 ```
 
 
-
 ## Install Dependencies and Run
 
 ```bash
