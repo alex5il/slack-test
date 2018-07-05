@@ -11,7 +11,13 @@ const slackConfig = config.get('slack');
 
 const REPORTS_CONFIG = {
   userActivity: {
-    name: 'User Activity',
+    name: ':nose:',
+    namePrefix: 'userActivity',
+    type: 'csv',
+    func: getUserActivity,
+  },
+  userActivity2: {
+    name: ':pig_nose:',
     namePrefix: 'userActivity',
     type: 'csv',
     func: getUserActivity,
@@ -76,11 +82,11 @@ const generateReportImplAsync = async (options, { slackReqObj }) => {
     const message = {
       responseUrl: slackReqObj.response_url,
       replaceOriginal: false,
-      text: 'Your report is ready!',
+      text: 'Your nose is ready!',
       attachments: [{
         text: `<${uploadedReport.file.url_private}|${reportName}>`,
         color: '#2c963f',
-        footer: 'Click report link to open menu with download option',
+        footer: 'Click nose link to open menu with download option',
       }],
     };
     return postChatMessage(message)
@@ -92,7 +98,7 @@ const generateReportImplAsync = async (options, { slackReqObj }) => {
     const message = {
       responseUrl: slackReqObj.response_url,
       replaceOriginal: false,
-      text: `Well this is embarrassing :sweat: I couldn't successfully get the report *${reportName}*. Please try again later as I look into what went wrong.`,
+      text: `Well this is embarrassing :sweat: I couldn't successfully get the nose *${reportName}*. Please try again later as I look into what went wrong.`,
       mrkdwn: true,
       mrkdwn_in: ['text'],
     };
@@ -138,7 +144,7 @@ export const generateReport = async (options) => {
 
     const response = {
       response_type: 'in_channel',
-      text: `Got it :thumbsup: Generating requested report *${report.name}*\nPlease carry on, I'll notify you when I'm done.`,
+      text: `Got it :thumbsup: Generating requested nose *${report.name}*\nPlease carry on, I'll notify you when I'm done.`,
       mrkdwn: true,
       mrkdwn_in: ['text'],
     };
